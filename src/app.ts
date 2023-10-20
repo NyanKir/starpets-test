@@ -21,14 +21,13 @@ export class App {
   public listen() {
     const server = this.app.listen(this.port, () => {
       console.log(
-        `⚡️[server]: Server is running at http://localhost:${this.port}`
+        `⚡️[server]: Server is running at http://localhost:${this.port}, pid: ${process.pid}`
       );
     });
 
     server.on('close', () => {
-      // mongoose.connection.close();
       console.log(
-        `⚡️[server]: Server is closed at http://localhost:${this.port}`
+        `⚡️[server]: Server is closed at http://localhost:${this.port}, pid: ${process.pid}`
       );
     });
 
