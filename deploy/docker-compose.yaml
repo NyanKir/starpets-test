@@ -1,8 +1,0 @@
-services:
-  backend:
-    build: .
-    environment:
-      - NODE_ENV:'production'
-  mongodb:
-    image: 'mongo'
-    restart: 'always'
