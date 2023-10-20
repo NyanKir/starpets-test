@@ -6,10 +6,9 @@ import {
   PrimaryKey,
   CreatedAt,
   Default,
-  NotNull,
   AllowNull
 } from 'sequelize-typescript';
-import { DataTypes, NOW } from 'sequelize';
+import { NOW } from 'sequelize';
 
 export interface IUsers {
   user_id: number;

@@ -1,6 +1,8 @@
+import Joi from 'joi';
+
 export class HttpException extends Error {
   status: number;
-  constructor(status: number, message: any) {
+  constructor(status: number, message) {
     super(message);
 
     this.message = message;
@@ -9,10 +11,10 @@ export class HttpException extends Error {
 }
 
 export class ErrorBuilder {
-  static BadRequest(message?: any) {
+  static BadRequest(message?: string | Joi.ValidationError) {
     return new HttpException(400, message || 'Bad request');
   }
-  static Forbidden(message?: any) {
+  static Forbidden(message?: string | Joi.ValidationError) {
     return new HttpException(403, message || 'Forbidden');
   }
 }

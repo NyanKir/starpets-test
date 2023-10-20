@@ -1,6 +1,7 @@
-import { RouteHandle } from '@/declarations/route';
 import Joi from 'joi';
 import { ErrorBuilder } from '@exceptions/http.exception';
+
+import { RouteHandle } from '@/declarations/route';
 
 export enum ValidationSource {
   BODY = 'body',
@@ -32,7 +33,7 @@ export const ValidationMiddleware = function (
         break;
     }
 
-    const { error, value } = schema.validate(data, {
+    const { error } = schema.validate(data, {
       abortEarly: false,
       errors: {
         wrap: {
