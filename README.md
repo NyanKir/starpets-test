@@ -10,7 +10,7 @@ https://github.com/nvm-sh/nvm
 $ nvm use
 $ pnpm install
 ```
-Create `.env` file. For example `.env.template`. You can take test .env values from project vault
+Create `.env` file, from example `.env.template`.
 
 ## Scripts and how to run
 
