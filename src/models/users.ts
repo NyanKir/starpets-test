@@ -4,14 +4,15 @@ import {
   Model,
   AutoIncrement,
   PrimaryKey,
-  UpdatedAt,
   CreatedAt,
-  Default
+  Default,
+  NotNull,
+  AllowNull
 } from 'sequelize-typescript';
-import { NOW } from 'sequelize';
+import { DataTypes, NOW } from 'sequelize';
 
-interface IUser {
-  id: number;
+export interface IUsers {
+  user_id: number;
   balance: number;
   create_at: Date;
 }
@@ -20,16 +21,19 @@ interface IUser {
   tableName: 'users',
   timestamps: false
 })
-export class Users extends Model<IUser> {
+export class Users extends Model<IUsers> {
   @PrimaryKey
   @AutoIncrement
-  @Column('user_id')
-  userId: number;
+  @AllowNull(false)
+  @Column
+  user_id: number;
 
+  @AllowNull(false)
   @Column
   balance: number;
 
   @Default(NOW)
+  @AllowNull(false)
   @CreatedAt
   @Column
   created_at: Date;

@@ -1,11 +1,17 @@
-import { Routes } from '@/declarations/route';
 import { Router } from 'express';
-import { IController, UsersController } from '@/routes/users/controller';
+import { Routes } from '../../declarations/route';
+import { UsersController } from './controller';
+import { UsersService } from './service';
+import {
+  ValidationMiddleware,
+  ValidationSource
+} from '../../middlewares/validation.middleware';
+import { updateBalanceSchema } from './users.schema';
 
 export class UsersRouter implements Routes {
   path: string = '/users';
   router: Router = Router();
-  controller = new UsersController();
+  controller = new UsersController(new UsersService());
 
   constructor() {
     this.initRoutes();
@@ -18,6 +24,7 @@ export class UsersRouter implements Routes {
     );
     this.router.post(
       `${this.path}/balance`,
+      ValidationMiddleware(updateBalanceSchema, ValidationSource.BODY),
       this.controller.updateBalance.bind(this.controller)
     );
   }
