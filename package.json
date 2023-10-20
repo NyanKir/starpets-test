@@ -7,7 +7,9 @@
   "scripts": {
     "build": "npx tsc && tsc-alias",
     "start": "NODE_PATH=./dist node ./dist/server.js",
-    "dev": "cross-env NODE_ENV=development nodemon"
+    "dev": "cross-env NODE_ENV=development nodemon",
+    "migrate": "npx sequelize-cli db:migrate",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo"
   },
   "dependencies": {
     "cors": "^2.8.5",
