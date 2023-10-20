@@ -1,6 +1,8 @@
-import express, { Express } from 'express';
 import { PORT } from '@config';
+import express, { Express } from 'express';
 import cors from 'cors';
+
+import 'models';
 import { ErrorMiddleware } from '@middlewares/error.middleware';
 import { Routes } from '@/declarations/route';
 
@@ -40,6 +42,7 @@ export class App {
 
   private initRoutes(routes: Routes[] = []) {
     this.app.get('/', (req, res) => res.sendStatus(200));
+
     routes.forEach((route) => {
       this.app.use('/', route.router);
     });

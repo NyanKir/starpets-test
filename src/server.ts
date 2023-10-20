@@ -1,3 +1,4 @@
 import { App } from '@/app';
+import { UsersRouter } from '@/routes/users/route';
 
-new App([]).listen();
+new App([new UsersRouter()]).listen();
