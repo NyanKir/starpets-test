@@ -24,7 +24,8 @@ export class UsersController implements IController {
       res.send(user);
     } catch (e: HttpException | unknown) {
       if (e instanceof DatabaseError) {
-        // @ts-ignore
+        console.log(JSON.stringify(e));
+        // @ts-ignore TODO: found interface/class for condition
         if (e.parent.code === '23514') {
           next(new HttpException(400, `Bad request, Balance too low to minus`));
         }
