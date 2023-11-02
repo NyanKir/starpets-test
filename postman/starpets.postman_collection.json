@@ -1,0 +1,46 @@
+{
+	"info": {
+		"_postman_id": "b897f34f-d4fd-4419-861a-a00fb81c302a",
+		"name": "starpets",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "12992102"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/users/balance",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": 2,\n    \"balance\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/users/balance"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:3000/users"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/"
+			},
+			"response": []
+		}
+	]
+}

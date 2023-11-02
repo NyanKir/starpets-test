@@ -1,0 +1,14 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 1
+      arrivalRate: 10000
+      name: Warm up
+scenarios:
+  - name: "Update balance"
+    flow:
+      - post:
+          url: "/users/balance"
+          json:
+            user_id: 3
+            balance: 2
