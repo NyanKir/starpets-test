@@ -18,12 +18,11 @@ if (cluster.isPrimary) {
   }
 } else {
   const handle = async () => {
+    console.log(`Worker ${process.pid} died`);
     await jobsRepository.finishJobByPID(process.pid);
   };
 
-  process.on('SIGINT', () => {
-    console.log(`Worker ${process.pid} died`);
-  });
+  process.on('SIGINT', handle);
   process.on('exit', handle);
 
   new App([new UsersRouter(), new JobsRouter()]).listen(() => {
