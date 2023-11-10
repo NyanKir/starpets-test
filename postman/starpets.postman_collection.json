@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:3000/users/balance",
+			"name": "update balance",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -25,7 +25,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:3000/users",
+			"name": "create user",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -34,11 +34,20 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:3000/",
+			"name": "get status",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": "http://localhost:3000/"
+			},
+			"response": []
+		},
+		{
+			"name": "get jobs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8000/jobs"
 			},
 			"response": []
 		}

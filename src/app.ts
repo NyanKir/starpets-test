@@ -8,21 +8,22 @@ import { Routes } from '@/declarations/route';
 
 export class App {
   private app: Express;
-  private readonly port: any;
+  private readonly port: number;
 
   constructor(routes: Routes[] = []) {
     this.app = express();
-    this.port = PORT;
+    this.port = Number(PORT);
 
     this.initMiddlewares();
     this.initRoutes(routes);
   }
 
-  public listen() {
+  public listen(callback: () => void) {
     const server = this.app.listen(this.port, () => {
       console.log(
         `⚡️[server]: Server is running at http://localhost:${this.port}, pid: ${process.pid}`
       );
+      callback();
     });
 
     server.on('close', () => {

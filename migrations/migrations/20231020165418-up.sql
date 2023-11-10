@@ -4,4 +4,3 @@ CREATE TABLE public.users (
   created_at TIMESTAMP NOT NULL DEFAULT now(),
   CONSTRAINT pk_users_user_id PRIMARY KEY (user_id)
 );
-

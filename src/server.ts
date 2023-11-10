@@ -1,22 +1,32 @@
 import { App } from '@/app';
-import { UsersRouter } from '@/routes/users/route';
 
 import cluster from 'node:cluster';
 import { availableParallelism } from 'node:os';
 import process from 'node:process';
+import { UsersRouter } from '@/routes/users/users.route';
+import { JobsRouter } from '@/routes/users/jobs.route';
+import { JobsService } from '@/services/jobs.service';
+import { jobsRepository } from '@/repository/jobs.repository';
 
 const numCPUs = availableParallelism();
 
 if (cluster.isPrimary) {
-  console.log(`Primary ${process.pid} is running`);
+  console.log(`Primary pid ${process.pid} is running`);
 
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
   }
-
-  cluster.on('exit', (worker, code, signal) => {
-    console.log(`рабочий ${worker.process.pid} умер`);
-  });
 } else {
-  new App([new UsersRouter()]).listen();
+  const handle = async () => {
+    await jobsRepository.finishJobByPID(process.pid);
+  };
+
+  process.on('SIGINT', () => {
+    console.log(`Worker ${process.pid} died`);
+  });
+  process.on('exit', handle);
+
+  new App([new UsersRouter(), new JobsRouter()]).listen(() => {
+    void new JobsService(cluster.worker.id, numCPUs).run();
+  });
 }

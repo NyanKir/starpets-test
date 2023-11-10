@@ -1,9 +1,9 @@
 import { RouteHandle } from '@/declarations/route';
 import { NextFunction, Request, Response } from 'express';
-import { IUsersService } from '@/routes/users/service';
 import { IUsers } from '@/models/users';
 import { HttpException } from '@exceptions/http.exception';
 import { DatabaseError } from 'sequelize';
+import { IUsersService } from '@/services/users.service';
 
 export interface IController {
   updateBalance: RouteHandle<void>;

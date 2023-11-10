@@ -2,6 +2,7 @@
 ```
 $ POST /users - create
 $ POST /users/balance - update balance
+$ GET /jobs - get unfinished jobs
 ```
 ## Quick start
 To switch between different version of nodesjs. You can use the utility:

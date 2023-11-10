@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { Routes } from '../../declarations/route';
-import { UsersController } from './controller';
-import { UsersService } from './service';
+import { Routes } from '@/declarations/route';
 import {
   ValidationMiddleware,
   ValidationSource
-} from '../../middlewares/validation.middleware';
-import { updateBalanceSchema } from './users.schema';
+} from '@middlewares/validation.middleware';
+import { UsersController } from '@/controllers/users.controller';
+import { updateBalanceSchema } from '@/controllers/users.schema';
+import { UsersService } from '@/services/users.service';
 
 export class UsersRouter implements Routes {
   path: string = '/users';
